@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components.Web;
 using Raven.Client.Documents;
 using Serilog;
+using Serilog.Events;
+using Serilog.Extensions.Logging;
 using Serilog.Sinks.MSSqlServer;
 using System;
 using System.Collections.Generic;
@@ -30,29 +32,27 @@ namespace SeriLogPractice
 
 
             Log.Logger = new LoggerConfiguration()
-    .WriteTo
-    .MSSqlServer(
-        connectionString: "Server=(localdb)\\MSSQLLocalDB;Database=Log;Integrated Security=SSPI;",
-        sinkOptions: new MSSqlServerSinkOptions() { AutoCreateSqlTable = true , TableName = "Log"})
-    .CreateLogger();
+                .MinimumLevel.Verbose()
+            .WriteTo
+            .File("log.txt")
+            .WriteTo
+            .MSSqlServer(
+             connectionString: "Server=(localdb)\\MSSQLLocalDB;Database=Log;Integrated Security=SSPI;",
+             sinkOptions: new MSSqlServerSinkOptions() { AutoCreateSqlTable = true , TableName = "Log"})
+            .Enrich.WithProperty("Application name" , "New Application")
+            .CreateLogger();
 
         }
 
         private void sum_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Result.Text = (int.Parse(Number1.Text) + int.Parse(Number2.Text)).ToString();
-                Log.Information("sum of {firstNumber:0.0} and {secondNumber} is {result}", int.Parse(Number1.Text)
-                    , int.Parse(Number2.Text)
-                    , int.Parse(Result.Text));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Please enter right values");
-                Log.Warning(ex , "The sum operation was unsuccessful");
-            }
+            var contextLog = Log.Logger.ForContext("programmer" , 15);
             
+
+            contextLog.Verbose("Getting the values");
+            contextLog.Debug("Attempting to sum {number} with {number2}", int.Parse(Number1.Text), int.Parse(Number2.Text));
+            Log.Information("This is information");
+
         }
 
         private void subtraction_Click(object sender, RoutedEventArgs e)
