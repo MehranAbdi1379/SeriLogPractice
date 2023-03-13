@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Web;
+using Raven.Client.Documents;
 using Serilog;
+using Serilog.Sinks.MSSqlServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,37 +28,48 @@ namespace SeriLogPractice
         {
             InitializeComponent();
 
-            const string customTemplate = "Will be logged: {Timestamp:yyyy-MMM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}";
 
-            ILogger logger = new LoggerConfiguration()
-                .Destructure.ByTransforming<Color>(c => new {c.Red , c.Green})
-                .WriteTo
-                .File("log.txt" , outputTemplate: customTemplate)
-                .CreateLogger();
+            Log.Logger = new LoggerConfiguration()
+    .WriteTo
+    .MSSqlServer(
+        connectionString: "Server=(localdb)\\MSSQLLocalDB;Database=Log;Integrated Security=SSPI;",
+        sinkOptions: new MSSqlServerSinkOptions() { AutoCreateSqlTable = true , TableName = "Log"})
+    .CreateLogger();
 
-            Log.Logger = logger;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void sum_Click(object sender, RoutedEventArgs e)
         {
-            string name = Name.Text;
-            int age = int.Parse(Age.Text);
-            var faveColor = new Color
+            try
             {
-                Blue = 132,
-                Green = 13,
-                Red = 24
-            };
+                Result.Text = (int.Parse(Number1.Text) + int.Parse(Number2.Text)).ToString();
+                Log.Information("sum of {firstNumber:0.0} and {secondNumber} is {result}", int.Parse(Number1.Text)
+                    , int.Parse(Number2.Text)
+                    , int.Parse(Result.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please enter right values");
+                Log.Warning(ex , "The sum operation was unsuccessful");
+            }
+            
+        }
 
-            Log.Information("User Added {UserName} , Age {UserAge}. Favorites: {@Colors}" , name, age , faveColor);
+        private void subtraction_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void multiply_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void division_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
 
-    public class Color
-    {
-        public int Green { get; set; }
-        public int Blue { get; set; }
-        public int Red { get; set; }
-    }
+    
 }

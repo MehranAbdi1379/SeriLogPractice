@@ -60,6 +60,10 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
+            "Serilog.Sinks.MSSqlServer": {
+              "target": "Package",
+              "version": "[6.2.0, )"
+            },
             "ravendb.client": {
               "target": "Package",
               "version": "[5.4.101, )"

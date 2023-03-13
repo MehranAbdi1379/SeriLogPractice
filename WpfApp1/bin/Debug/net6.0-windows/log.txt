@@ -1,12 +1,13 @@
-Will be logged: 2023-Mar-13 12:36:32 [Information] User Added "Mehran" , Age 22
-Will be logged: 2023-Mar-13 12:36:34 [Information] User Added "Mehran" , Age 22
-Will be logged: 2023-Mar-13 12:36:41 [Information] User Added "Ali" , Age 24
-Will be logged: 2023-Mar-13 12:36:47 [Information] User Added "Mohsen" , Age 29
-Will be logged: 2023-Mar-13 12:36:55 [Information] User Added "Hamed" , Age 35
-Will be logged: 2023-Mar-13 12:38:56 [Information] User Added "Mehran" , Age 24. Added on 03/13/2023 12:38:56
-Will be logged: 2023-Mar-13 12:39:54 [Information] User Added "Alex" , Age 35. Added on 03/13/2023 12:39:54 00000000-0000-0000-0000-000000000000
-Will be logged: 2023-Mar-13 12:41:09 [Information] User Added "Mehran" , Age 25. Added on 03/13/2023 12:41:09 c0007b21-fb48-4584-ae55-a4d58cac3950
-Will be logged: 2023-Mar-13 12:43:05 [Information] User Added "Suzan" , Age 57. Favorites: ["red", "blue", "green"]
-Will be logged: 2023-Mar-13 12:48:15 [Information] User Added "Mheran" , Age 45. Favorites: "SeriLogPractice.Color"
-Will be logged: 2023-Mar-13 12:48:46 [Information] User Added "Ali" , Age 75. Favorites: Color { Green: 13, Blue: 132, Red: 24 }
-Will be logged: 2023-Mar-13 12:52:21 [Information] User Added "dsf" , Age 14. Favorites: { Red: 24, Green: 13 }
+2023-03-13 14:02:25.475 +03:30 [INF] The operation was unsuccessful
+2023-03-13 14:02:58.311 +03:30 [INF] The sum operation was unsuccessful
+2023-03-13 14:03:02.456 +03:30 [INF] The sum operation was unsuccessful
+2023-03-13 14:03:02.710 +03:30 [INF] The sum operation was unsuccessful
+2023-03-13 14:03:02.864 +03:30 [INF] The sum operation was unsuccessful
+2023-03-13 14:03:03.046 +03:30 [INF] The sum operation was unsuccessful
+2023-03-13 14:03:31.879 +03:30 [INF] sum of 45 and 18 is 63
+2023-03-13 14:03:33.811 +03:30 [INF] sum of 45 and 18 is 63
+2023-03-13 14:03:34.241 +03:30 [INF] sum of 45 and 18 is 63
+2023-03-13 14:03:34.399 +03:30 [INF] sum of 45 and 18 is 63
+2023-03-13 14:03:34.543 +03:30 [INF] sum of 45 and 18 is 63
+2023-03-13 14:03:36.774 +03:30 [INF] sum of 45 and 48 is 93
+2023-03-13 14:03:40.454 +03:30 [INF] The sum operation was unsuccessful
